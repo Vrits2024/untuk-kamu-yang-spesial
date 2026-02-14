@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to top, #1e1e2f, #2c2c54);
+    overflow: hidden;
+    color: white;
+}
+
+.container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 90%;
+    max-width: 520px;
+    text-align: center;
+    animation: scrollUp 55s linear forwards;
+}
+
+@keyframes scrollUp {
+    0% { transform: translateY(100%); }
+    100% { transform: translateY(-130%); }
+}
+
+.message {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1.5s ease forwards;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.message:nth-child(1){ animation-delay: 2s; }
+.message:nth-child(2){ animation-delay: 8s; }
+.message:nth-child(3){ animation-delay: 14s; }
+.message:nth-child(4){ animation-delay: 20s; }
+.message:nth-child(5){ animation-delay: 26s; }
+.message:nth-child(6){ animation-delay: 32s; }
+.message:nth-child(7){ animation-delay: 38s; }
+.message:nth-child(8){ animation-delay: 44s; }
+.message:nth-child(9){ animation-delay: 50s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bubble Animation */
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(255, 182, 193, 0.35);
+    border-radius: 50%;
+    animation: rise 20s infinite ease-in;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <div class="message">
+            Selamat ya… akhirnya kamu resmi menyelesaikan masa magangmu di Rumah Sakit Nasional Diponegoro.
+            Aku tahu prosesnya tidak selalu mudah, tapi kamu menjalaninya dengan penuh tanggung jawab.
+            Aku benar-benar bangga sama kamu, apa pun itu.
+        </div>
+
+        <div class="message">
+            Belakangan ini aku merasa hubungan kita berjalan dan bertambah kuat dengan cara yang baik.
+            Semakin dekat dari biasanya.
+        </div>
+
+        <div class="message">
+            Aku ingin mendekatimu lebih dalam,
+            memiliki hubungan yang tidak seperti kebanyakan orang biasanya.
+            Aku ingin hubungan kita tetap sehat,
+            jauh dari hal-hal buruk atau negatif yang sering kali sulit dikendalikan.
+        </div>
+
+        <div class="message">
+            Walaupun sederhana,
+            tapi semakin berarti.
+            Itu pun sudah cukup bagiku untuk bersyukur,
+            karena memilihmu menjadi seseorang yang kuanggap spesial dari yang lain.
+        </div>
+
+        <div class="message">
+            Setiap kali aku menunggu pesan darimu,
+            lalu melihat namamu muncul di layar,
+            selalu ada senyum kecil yang hadir tanpa sadar.
+        </div>
+
+        <div class="message">
+            Dan setiap membalas pesanmu,
+            ada keinginan sederhana dalam hati…
+            untuk bisa berbicara tanpa jarak,
+            tanpa layar di antara kita.
+        </div>
+
+        <div class="message">
+            Kadang aku membayangkan bagaimana rasanya bersama di sampingmu,
+            bercerita langsung,
+            ngobrol bareng sambil memandang wajah manismu…
+            dan mungkin mengabadikan satu foto dengan senyum kita berdua dalam satu frame yang sama.
+        </div>
+
+        <div class="message">
+            Jika takdir mengizinkan kita untuk bersama,
+            semoga hubungan ini tetap utuh dan semakin kuat.
+            Aku pun selalu berusaha dan menyimpan doa dalam hati,
+            agar suatu saat nanti kita bisa benar-benar dipertemukan kembali,
+            dan waktu yang menjawab semuanya.
+        </div>
+
+        <div class="message">
+            Aku mungkin tidak sempurna dalam banyak hal,
+            dan belum cukup berani untuk mengucapkan kalimat “itu”.
+            Tapi pesan ini hanya untuk kamu,
+            seorang wanita yang aku kagumi,
+            dan yang terasa begitu spesial bagiku.
+            Semoga kamu suka.
+        </div>
+
+    </div>
+</div>
+
+<script>
+for(let i = 0; i < 30; i++){
+    let bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+    bubble.style.left = Math.random() * 100 + "vw";
+    bubble.style.width = bubble.style.height = Math.random() * 40 + 20 + "px";
+    bubble.style.animationDuration = (Math.random() * 10 + 10) + "s";
+    document.body.appendChild(bubble);
+}
+</script>
+
+</body>
+</html>
