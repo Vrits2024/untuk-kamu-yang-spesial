@@ -11,30 +11,199 @@ body {
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(to top, #1e1e2f, #2c2c54);
-    overflow: hidden;
     color: white;
-}
-
-.container {
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.card {
-    width: 90%;
-    max-width: 520px;
+.container {
     text-align: center;
-    animation: scrollUp 55s linear forwards;
+    width: 90%;
+    max-width: 600px;
+    z-index: 2;
 }
 
-@keyframes scrollUp {
-    0% { transform: translateY(100%); }
-    100% { transform: translateY(-130%); }
+.hidden {
+    display: none;
 }
+
+.fade {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.8s ease;
+}
+
+.fade.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.message {
+    display: none;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.message.show {
+    display: block;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {opacity:0; transform: translateY(15px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+button {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    background: #ff8fb1;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #ff5f8f;
+}
+
+/* Bubble Animation */
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(255, 182, 193, 0.3);
+    border-radius: 50%;
+    animation: rise 18s infinite ease-in;
+    z-index: 1;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    100% { transform: translateY(-120vh) scale(1.4); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Opening Section -->
+    <div id="opening" class="fade show">
+        <h2>Haloo bubb 💗</h2>
+        <p>Aku buat lagi ini untuk kamu di hari yang cukup spesial ini.</p>
+        <button onclick="startMessage()">Baca Pesan</button>
+    </div>
+
+    <!-- Message Section -->
+    <div id="messages" class="hidden">
+
+        <div class="message">
+            Selamat ya… kamu sudah menyelesaikan magangmu di Rumah Sakit Nasional Diponegoro.
+            Aku tahu prosesnya tidak selalu mudah, tapi kamu menjalaninya dengan penuh tanggung jawab, artinya kamu sangat hebat!.
+            Aku benar-benar bangga sama kamu, apa pun itu.
+        </div>
+
+        <div class="message">
+            Belakangan ini aku merasa hubungan kita berjalan dan bertambah kuat dengan cara yang baik.
+            Semakin dekat dari biasanya.
+        </div>
+
+        <div class="message">
+            Aku ingin mendekatimu lebih dalam,
+            memiliki hubungan yang tidak seperti kebanyakan orang biasanya.
+            Aku ingin hubungan kita tetap sehat,
+            jauh dari hal-hal buruk atau negatif.
+        </div>
+
+        <div class="message">
+            Walaupun sederhana,
+            tapi semakin berarti.
+            Itu sudah cukup bagiku untuk bersyukur,
+            karena memilihmu menjadi seseorang yang kuanggap spesial dari yang lain.
+        </div>
+
+        <div class="message">
+            Setiap kali aku menunggu pesan darimu,
+            lalu melihat namamu muncul di layar,
+            selalu ada senyum kecil yang hadir tanpa sadar.
+        </div>
+
+        <div class="message">
+            Dan setiap membalas pesanmu,
+            ada keinginan sederhana dalam hati…
+            untuk bisa berbicara tanpa jarak,
+            tanpa layar di antara kita.
+        </div>
+
+        <div class="message">
+            Kadang aku membayangkan bagaimana rasanya bersama di sampingmu,
+            bercerita langsung,
+            ngobrol bareng sambil memandang wajah manismu…
+            dan mungkin mengabadikan satu foto dengan senyum kita berdua dalam satu frame yang sama.
+        </div>
+
+        <div class="message">
+            Jika takdir mengizinkan kita untuk bersama,
+            semoga hubungan ini tetap utuh dan semakin kuat.
+            Aku pun selalu berusaha dan menyimpan doa dalam hati,
+            agar suatu saat nanti kita benar-benar dipertemukan kembali,
+            dan waktu yang menjawab semuanya.
+        </div>
+
+        <div class="message">
+            Aku mungkin tidak sempurna dan belum cukup berani mengucapkan kalimat “itu”.
+            Tapi pesan ini hanya untuk kamu,
+            seorang wanita yang aku kagumi dan terasa begitu spesial bagiku.
+            Semoga kamu suka.
+        </div>
+
+        <button id="nextBtn" onclick="nextMessage()">Lanjut</button>
+
+    </div>
+
+</div>
+
+<script>
+let current = 0;
+const messages = document.querySelectorAll(".message");
+const nextBtn = document.getElementById("nextBtn");
+
+function startMessage() {
+    document.getElementById("opening").classList.add("hidden");
+    document.getElementById("messages").classList.remove("hidden");
+    nextMessage();
+}
+
+function nextMessage() {
+    if (current < messages.length) {
+        messages[current].classList.add("show");
+        current++;
+    } else {
+        nextBtn.innerText = "Terima Kasih 🤍";
+        nextBtn.disabled = true;
+    }
+}
+
+// Romantic Bubbles
+for(let i = 0; i < 30; i++){
+    let bubble = document.createElement("div");
+    bubble.classList.add("bubble");
+    bubble.style.left = Math.random() * 100 + "vw";
+    bubble.style.width = bubble.style.height = Math.random() * 40 + 20 + "px";
+    bubble.style.animationDuration = (Math.random() * 10 + 10) + "s";
+    document.body.appendChild(bubble);
+}
+</script>
+
+</body>
+</html>}
 
 .message {
     opacity: 0;
